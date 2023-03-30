@@ -1,0 +1,26 @@
+.form1{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    justify-content: center;
+}
+
+.form2{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    justify-content: center;
+}
+
+fieldset{
+    border-radius: 20px;
+    background-color: rgb(233, 233, 233);
+    margin: 20px;
+}
+
+input{
+    width: 50%;
+    padding: 12px 20px;
+    border-radius: 9px;
+    margin: 10px;
+}

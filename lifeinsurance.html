@@ -1,0 +1,102 @@
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "user_db";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  $stmt = $conn->prepare("INSERT INTO life_form (firstname, lastname, email, id) VALUES (?, ?, ?, ?)");
+
+  $stmt->bind_param("sssi", $firstname, $value2, $value3, $value4);
+
+  $value1 = $_POST["firstname"];
+  $value2 = $_POST["lastname"];
+  $value3 = $_POST["email"];
+  $value4 = $_POST["id"];
+
+  if ($stmt->execute() === TRUE) {
+    echo "Data inserted successfully";
+  } else {
+    echo "Error inserting data: " . $conn->error;
+  }
+
+  $stmt->close();
+  $conn->close();
+}
+?>
+
+
+<!DOCTYPE html>
+
+    <head><title> Life Insurance</title><link rel="stylesheet" href="style5.css"></head>
+
+    <body>
+        <section class = "Insurances">
+            <p1>
+                <h1><b>What Is Life Insurance?</b></h1><br>
+                Life insurance is a contract between a life insurance<br>
+                company and a policy owner. A life insurance policy <br>
+                guarantees the insurer pays a sum of money to one or more<br>
+                named beneficiaries when the insured person dies in<br>
+                exchange for premiums paid by the policyholder during<br>
+                their lifetime.
+            </p1>
+
+            <h1><u>Types of Life Insurance</u></h1><br>
+            <p2>
+                <h2><b>Term Life Insurance:</b></h2>
+                Term life insurance is designed to last a certain number of<br>
+                years, then end. You choose the term when you take out the<br>
+                policy. Common terms are 10, 20, or 30 years. The best term<br>
+                life insurance policies balance affordability with long-term<br>
+                financial strength.
+            </p2>
+            <br><br><br><h1><b>Interested in acquiring our insurance?<br>Fill the form below!</h1></b>
+            <div style="position:relative; left:650px; bottom: 270px;">
+                <p3>
+                    <h2><b>Permanent Life Insurance:</b></h2>
+                    Permanent life insurance stays in force for the insured’s<br>
+                    entire life unless the policyholder stops paying the<br>
+                    premiums or surrenders the policy. It’s more expensive than<br>
+                    term.
+                </p3>
+            </div>
+        </section>
+
+        <section class="form1">
+            <form action="connect.php" method="post">
+                <fieldset style="position:relative; left :300px">
+                    <div>
+                        <label for = "fname">First Name</label><br>
+                        <input type = "text" name="firstname">
+                    </div>    
+                    <div>
+                        <label for = "lname">Last Name</label><br>
+                        <input type = "text" name="lastname">
+                    </div> 
+                    <div>
+                        <label for = "ID">National ID</label><br>
+                        <input type = "number" name="id">
+                    </div> 
+                    <div>
+                        <label for = "email">Email Address</Address></label><br>
+                        <input type = "email" name="email" placeholder="example@gmail.com">
+                    </div> 
+                    <button type="submit">Register</button>
+                </fieldset>
+            </form>
+
+
+        </section>
+
+
+
+        </body>
